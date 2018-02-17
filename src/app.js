@@ -3,12 +3,16 @@ import Emojis from "./components/emojis";
 import Wrapper from "./components/wrapper";
 import faces from "./faces.json";
 import Jumbotron from "./components/jumbotron";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar";
 
 class App extends Component {
     // setting this.state.faces to the faces json array
     state = {
-        faces
+        faces,
+        currentScore: 0,
+        topScore: 0,
+        currentPicks: [],
+        randomPics: []
     };
 
     removeEmoji = id => {
@@ -20,19 +24,18 @@ class App extends Component {
         this.setState({ faces });
     };
 
+    clickGame = event => {
+
+    };
+
     // Map over this.state.faces and render an emoji component for each face object
     render() {
         return (
             <div>
-                <Navbar>
-                    <ul>
-                        <li className="brand">
-                            <a href="/">Clicky Game</a>
-                        </li>
-                        <li>Click an image to begin!</li>
-                        <li></li>
-                    </ul>
-                </Navbar>
+                <Navbar 
+                    currentScore={this.state.currentScore}
+                    topScore={this.state.topScore}
+                />
                 <Jumbotron />
                 <Wrapper>
                     {this.state.faces.map(face => (
